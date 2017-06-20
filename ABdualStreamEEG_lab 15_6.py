@@ -27,6 +27,8 @@ descendingPsycho = True
 # Open parallel port and make sure it is at 0
 
 send_triggers = False # see for a list of trigger codes https://docs.google.com/spreadsheets/d/1DFz8UYBf-cw3UojR7Va5u7hPOHZE05YQPRT8jkmjnmg/edit#gid=0
+if not send_triggers:
+    print("WARNING not sending triggers because send_triggers FALSE")
 p_started = True                               #Whether we've started the experiment (used to determine whether to do a dummy trial after show_exit_screen)
 p_targetTriggervalue = 50 #this is the code that is sent when the target is presented 
 #p_stimuliCodes = range(1,27) #this the code to send for stimuli1,stimuli2, etc.
@@ -52,10 +54,10 @@ demo=False #False
 exportImages= False #quits after one trial
 subject='Hubert' #user is prompted to enter true subject name
 if autopilot: subject='auto'
-if os.path.isdir('.'+os.sep+'data'):
-    dataDir='data'
+if os.path.isdir('.'+os.sep+'dataRaw'):
+    dataDir='dataRaw'
 else:
-    print('"data" directory does not exist, so saving data in present working directory')
+    print('"dataRaw" directory does not exist, so saving data in present working directory')
     dataDir='.'
 timeAndDateStr = time.strftime("%d%b%Y_%H-%M", time.localtime())
 
